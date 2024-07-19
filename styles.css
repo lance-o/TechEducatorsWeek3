@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+}
+
+/* I was going to display something up here, but I ran out of time*/
+#topNav {
+  position: fixed;
+  display: grid;
+  width: 90vw;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#idkSection {
+  grid-column-start: 1;
+}
+
+/*Originally was going to show all obtained upgrades. Didn't make it that far.*/
+#upgradeSection {
+  grid-column-start: 2;
+}
+
+/*This is just the cookie and cps display.*/
+#content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Cookie is "clickableImg". Was going to have a class with more of these but gave up.*/
+#clickableImg {
+  width: 23vw;
+}
+
+/* Shrink cookie*/
+.clickAnim {
+  animation: stretch 0.05s;
+}
+
+/* Grow cookie*/
+.releaseAnim {
+  animation: stretch 0.05s reverse;
+}
+
+/*Make +1 text fly away and fade*/
+.flyAnim {
+  user-select: none;
+  pointer-events: none;
+  color: black;
+  font-size: 30px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  position: absolute;
+  animation: fly 4s;
+  z-index: 1;
+}
+
+@keyframes fly {
+  0% {
+    opacity: 100%;
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0%;
+  }
+}
+
+@keyframes stretch {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0.85;
+  }
+}
+
+/*Tried to be fancy with this, ended up wasting time more than anything. Oh well.*/
+#sideNavContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  width: 100vw;
+}
+
+#sideNav {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 10vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 2fr 6fr;
+  justify-content: center;
+  align-items: start;
+}
+
+/*For some reason THIS gave me a lot of trouble. I need a refresher on just... positioning a piece of text*/
+#title {
+  position: absolute;
+  width: 10vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#upgradeStore {
+  grid-row-start: 2;
+}
+
+#buildingStore {
+  grid-row-start: 3;
+}
+
+#sideNavContainer:hover > #title {
+  width: 20vw;
+  height: 100vh;
+}
+
+#sideNavContainer:hover > #sideNav {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 20vw;
+  height: 100vh;
+}
+
+/*Tried to get fancy with this, but it looks kinda ugly. I did my best, though!*/
+@media (max-width: 800px) {
+  #topNav {
+    width: 100vw;
+  }
+
+  #content {
+    position: fixed;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #sideNavContainer {
+    flex-direction: column;
+    height: 100vh;
+    justify-content: end;
+    align-items: center;
+  }
+
+  #sideNav {
+    width: 100vw;
+    height: 10vh;
+    grid-template-columns: 1fr 2fr;
+    justify-content: start;
+    align-items: start;
+    overflow: scroll;
+  }
+
+  #title {
+    width: 100vw;
+    height: 12.5vh;
+    left: -5vw;
+  }
+
+  #upgradeStore {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vh;
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  #buildingStore {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  #sideNavContainer:hover > #title {
+    width: 100vw;
+    height: 25vh;
+  }
+
+  #sideNavContainer:hover > #sideNav {
+    width: 100vw;
+    height: 20vh;
+  }
+  #clickableImg {
+    width: 23vh;
+  }
+}
